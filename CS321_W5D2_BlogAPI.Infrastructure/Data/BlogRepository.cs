@@ -14,24 +14,25 @@ namespace CS321_W5D2_BlogAPI.Infrastructure.Data
         public BlogRepository(AppDbContext dbContext) 
         {
             // TODO: inject AppDbContext
+            AppDbContext = AppDbContext;
         }
 
         public IEnumerable<Blog> GetAll()
         {
             // TODO: Retrieve all blgs. Include Blog.User.
-            throw new NotImplementedException();
+            return _dbContext;
         }
 
         public Blog Get(int id)
         {
             // TODO: Retrieve the blog by id. Include Blog.User.
-            throw new NotImplementedException();
+            return _dbContext.Blogs.FirstOrDefault(b => b.Id == id);
         }
 
         public Blog Add(Blog blog)
         {
             // TODO: Add new blog
-            throw new NotImplementedException();
+            return blog;
         }
 
         public Blog Update(Blog updatedItem)
@@ -40,18 +41,20 @@ namespace CS321_W5D2_BlogAPI.Infrastructure.Data
             throw new NotImplementedException();
             //var existingItem = _dbContext.Find(updatedItem.Id);
             //if (existingItem == null) return null;
+            if (updatedItem == null) return null;
             //_dbContext.Entry(existingItem)
             //   .CurrentValues
             //   .SetValues(updatedItem);
             //_dbContext.Blogs.Update(existingItem);
             //_dbContext.SaveChanges();
             //return existingItem;
+            return updatedItem;
         }
 
         public void Remove(int id)
         {
             // TODO: remove blog
-            throw new NotImplementedException();
+            _dbContext.Remove(blog);
         }
     }
 }
